@@ -1,58 +1,41 @@
-# Proyecto: Cuenta Bancaria
+#  Proyecto: Sistema de Cuentas Bancarias
 
-# Descripción
+##  Descripción
+Sistema de gestión bancaria desarrollado en Java que simula operaciones básicas de cuentas corrientes y de ahorros. El proyecto implementa principios de Programación Orientada a Objetos (OOP) con un enfoque en código mantenible y escalable.
 
-Este proyecto simula un sistema de cuentas bancarias en consola, desarrollado en Java.
-Permite crear cuentas, hacer depósitos, retiros, transferencias, aplicar intereses o cargos mensuales y consultar el historial de transacciones.
+##  Objetivos del Proyecto
+Aplicar principios SOLID y OOP:
+- **Encapsulación**: Datos protegidos con acceso controlado
+- **Responsabilidad Única (SRP)**: Cada clase con una función específica
+- **Abierto/Cerrado (OCP)**: Extensible sin modificar código existente
+- **Inversión de Dependencias (DIP)**: Banco maneja cuentas de forma abstracta
 
-Su objetivo es aplicar los principios de la Programación Orientada a Objetos (OOP) como:
+##  Funcionalidades Principales
 
-Encapsulación: los datos de cada cuenta están protegidos.
+###  Gestión de Cuentas
+- Crear cuentas (Corriente o Ahorros)
+- ID único automático
+- Consulta de saldo
 
-Responsabilidad única (SRP): cada clase y método tiene una sola función clara.
+###  Operaciones Bancarias
+- **Depósitos**: Validación de montos positivos
+- **Retiros**: Control de fondos suficientes
+- **Transferencias**: Entre cuentas con validación completa
 
-Abierto/Cerrado (OCP): se pueden agregar nuevas funciones sin cambiar el código base.
+###  Historial de Transacciones
+- Registro automático de todas las operaciones
+- Fecha, tipo, monto y saldo resultante
+- Consulta de historial por cuenta
 
-Inversión de dependencias (DIP): la clase Banco maneja las cuentas sin depender de una implementación fija.
+### Intereses y Cargos
+- **Cuentas de Ahorro**: Aplicación de intereses porcentuales
+- **Cuentas Corrientes**: Cargo mensual fijo
 
-# Funcionalidades principales
+##  Arquitectura del Proyecto
 
-Crear cuentas bancarias
-
-Corriente o de Ahorros
-
-Se asigna un ID único automáticamente.
-
-Depósitos y retiros
-
-Valida montos positivos y fondos suficientes.
-
-Transferencias entre cuentas
-
-Verifica que ambas cuentas existan, que el monto sea válido y que haya saldo suficiente.
-
-Historial de transacciones
-
-Registra depósitos, retiros, transferencias, intereses y cargos.
-
-Muestra fecha, tipo, monto y saldo final.
-
-Aplicar intereses y cargos
-
-Cuentas de ahorro ganan un interés porcentual.
-
-Cuentas corrientes pagan un cargo mensual.
-
-# Cómo funciona
-
-El programa usa las clases principales dentro del mismo archivo:
-
-CuentaBancaria: maneja el saldo, depósitos, retiros e historial.
-
-Banco: administra todas las cuentas y permite transferencias.
-
-Transaccion: guarda los movimientos de cada cuenta.
-
-InsufficientFundsException: controla errores de saldo insuficiente.
-
-El usuario puede interactuar desde la consola mediante un menú de opciones.
+### Clases Principales
+```java
+CuentaBancaria          // Gestión de saldo y operaciones individuales
+├── Banco              // Administración central de cuentas
+├── Transaccion        // Registro de movimientos
+└── InsufficientFundsException  // Manejo de errores
